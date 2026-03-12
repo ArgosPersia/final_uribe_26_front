@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Recuperar Contraseña</title>
+<link rel="stylesheet" href="../css/styles.css"/>
+</head>
+<body>
+
+<div class="card">
+
+
+<div id="formState">
+
+    <a href="login.html" class="back-btn">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Volver al inicio de sesión
+    </a>
+
+    <p class="form-eyebrow">Recuperación de cuenta</p>
+    <h1 class="form-title">¿Olvidó su<br/>contraseña?</h1>
+    <p class="form-desc">
+    No se preocupe. Ingrese su correo electrónico y le enviaremos
+    un enlace para que pueda crear una nueva contraseña.
+    </p>
+
+    <div class="alert-msg" id="alertMsg"></div>
+
+    <form onsubmit="handleRecover(event)">
+    <div class="input-group">
+        <label for="correo">Correo Electrónico</label>
+        <div class="input-wrapper">
+        <input type="email" id="correo"
+            placeholder="nombre@correo.com"
+            autocomplete="email" required/>
+        </div>
+    </div>
+    <button type="submit" class="btn-primary">
+        <span>Enviar Enlace</span>
+    </button>
+    </form>
+
+    <div class="sep"><span>también puede</span></div>
+
+    <div class="alt-links">
+    <a href="login.html" class="alt-link">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        Iniciar sesión
+    </a>
+    <a href="registro.html" class="alt-link">
+        <svg viewBox="0 0 24 24">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <line x1="19" y1="8" x2="19" y2="14"/>
+        <line x1="22" y1="11" x2="16" y2="11"/>
+        </svg>
+        Crear cuenta
+    </a>
+    </div>
+
+</div>
+
+<div class="success-state" id="successState">
+    <div class="check-circle">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2 class="success-title">Correo enviado</h2>
+    <p class="success-msg">
+    Hemos enviado un enlace de recuperación a<br/>
+    <strong id="sentTo"></strong><br/><br/>
+    Revise su bandeja de entrada. El enlace expira en 30 minutos.
+    </p>
+    <a href="login.html" class="alt-link" style="justify-content:center; border-color:rgba(201,168,76,.2);">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Volver al inicio de sesión
+    </a>
+</div>
+
+</div>
+
+<script src="../js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Variables de color y fuentes */
+:root {
+    --gold:        #C9A84C;
+    --gold-light:  #E8C97A;
+    --dark:        #0D0D0D;
+    --dark-2:      #161616;
+    --dark-3:      #1F1F1F;
+    --text:        #F0EDE6;
+    --text-muted:  #8A8578;
+    --border:      rgba(201, 168, 76, 0.25);
+    --font-serif:  'Cormorant Garamond', serif;
+    --font-sans:   'Montserrat', sans-serif;
+}
+
+/* Cuerpo de la página */
+body {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    overflow: hidden;
+}
+
+/* Esferas decorativas de fondo - arriba derecha */
+body::before {
+    content: '';
+    position: fixed;
+    top: -30%; right: -20%;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,.07) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Esferas decorativas de fondo - abajo izquierda */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%; left: -15%;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Animación de entrada */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor principal del login y registro */
+.container {
+    display: flex;
+    width: 900px;
+    min-height: 570px;
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+    animation: fadeUp .8s ease both;
+}
+
+/* Panel izquierdo con las marcas */
+.panel-left {
+    width: 42%;
+    background: linear-gradient(165deg, #131007 0%, #0D0D0D 55%, #0f0f0f 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 28px;
+    border-right: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cuadrícula decorativa del panel izquierdo */
+.panel-left::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,.03) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,.03) 40px);
+    pointer-events: none;
+}
+
+/* Título pequeño encima del grid de marcas */
+.panel-headline {
+    font-family: var(--font-serif);
+    font-size: 11px; font-style: italic;
+    letter-spacing: 3px; color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 22px; text-align: center;
+    position: relative;
+}
+
+/* Grid de tarjetas de marca */
+.brands-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px; width: 100%;
+    position: relative;
+}
+
+/* Tarjeta individual de cada marca */
+.brand-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(201,168,76,.18);
+    padding: 18px 12px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px; cursor: default;
+    transition: border-color .3s, background .3s, transform .3s;
+    position: relative; overflow: hidden;
+}
+
+/* Brillo al hacer hover en la tarjeta */
+.brand-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, transparent 60%);
+    opacity: 0; transition: opacity .3s;
+}
+.brand-card:hover {
+    border-color: rgba(201,168,76,.55);
+    background: rgba(201,168,76,.05);
+    transform: translateY(-2px);
+}
+.brand-card:hover::before { opacity: 1; }
+
+/* Ícono de cada tarjeta */
+.brand-icon {
+    width: 30px; height: 30px;
+    border: 1px solid rgba(201,168,76,.3);
+    display: flex; align-items: center; justify-content: center;
+}
+.brand-icon svg {
+    width: 15px; height: 15px; fill: none;
+    stroke: var(--gold); stroke-width: 1.5; opacity: .75;
+}
+
+/* Nombre de la marca */
+.brand-name-tag {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 600;
+    letter-spacing: 1.5px; color: var(--text);
+    text-align: center; line-height: 1;
+}
+
+/* Descripción corta debajo del nombre */
+.brand-desc {
+    font-size: 9px; font-weight: 300;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); text-align: center;
+}
+
+/* Línea divisora con diamante en el centro */
+.divider-ornament {
+    display: flex; align-items: center;
+    gap: 10px; margin: 20px 0 0; width: 100%;
+    position: relative;
+}
+.divider-ornament::before {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,.4));
+}
+.divider-ornament::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to left, transparent, rgba(201,168,76,.4));
+}
+.divider-ornament span { color: var(--gold); font-size: 12px; }
+
+/* Frase decorativa debajo del divisor */
+.panel-tagline {
+    font-family: var(--font-serif);
+    font-size: 26px; font-style: italic;
+    color: rgba(240,237,230,.28);
+    text-align: center; margin-top: 14px;
+    line-height: 1.8; position: relative;
+}
+
+/* Panel derecho con el formulario */
+.panel-right {
+    flex: 1;
+    padding: 56px 50px;
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+/* Texto pequeño encima del título del formulario */
+.form-eyebrow {
+    font-size: 15px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+}
+
+/* Título grande del formulario */
+.form-title {
+    font-family: var(--font-serif);
+    font-size: 38px; font-weight: 400;
+    color: var(--text); line-height: 1.1;
+    margin-bottom: 34px;
+}
+
+/* Grupo de campo con su label */
+.input-group { margin-bottom: 22px; }
+
+.input-group label {
+    display: block; font-size: 10px; font-weight: 500;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 8px;
+}
+
+/* Contenedor del input para posicionar el botón ver/ocultar */
+.input-wrapper { position: relative; }
+
+/* Estilos del campo de texto */
+.input-wrapper input {
+    width: 100%; background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,.2);
+    color: var(--text); font-family: var(--font-sans);
+    font-size: 13px; padding: 14px 18px; outline: none;
+    transition: border-color .3s, box-shadow .3s;
+    letter-spacing: .5px;
+}
+.input-wrapper input::placeholder {
+    color: rgba(138,133,120,.5); font-size: 12px;
+}
+.input-wrapper input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,.08);
+}
+
+/* Botón ver/ocultar contraseña */
+.toggle-pass {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); font-size: 11px;
+    font-family: var(--font-sans);
+    letter-spacing: 1px; text-transform: uppercase;
+    transition: color .2s;
+}
+.toggle-pass:hover { color: var(--gold); }
+
+/* Link de olvidé contraseña */
+.forgot-link {
+    display: block; text-align: right;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-muted);
+    text-decoration: none; margin-top: 8px; transition: color .2s;
+}
+.forgot-link:hover { color: var(--gold); }
+
+/* Botón principal del formulario */
+.btn-primary {
+    width: 100%; background: transparent;
+    border: 1.5px solid var(--gold); color: var(--gold);
+    font-family: var(--font-sans); font-size: 11px;
+    font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; padding: 16px;
+    cursor: pointer; margin-top: 10px;
+    position: relative; overflow: hidden; transition: color .3s;
+}
+
+/* Relleno dorado que aparece al hacer hover */
+.btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--gold); transform: scaleX(0);
+    transform-origin: left; transition: transform .35s ease; z-index: 0;
+}
+.btn-primary:hover::before { transform: scaleX(1); }
+.btn-primary:hover { color: var(--dark); box-shadow: 0 8px 30px rgba(201,168,76,.2); }
+.btn-primary span  { position: relative; z-index: 1; }
+
+/* Texto al pie del formulario */
+.form-footer {
+    margin-top: 28px; font-size: 11px;
+    color: var(--text-muted); letter-spacing: 1px; text-align: center;
+}
+.form-footer a {
+    color: var(--gold); text-decoration: none;
+    font-weight: 500; transition: opacity .2s;
+}
+.form-footer a:hover { opacity: .7; }
+
+/* Mensajes de alerta error y éxito */
+.alert-msg {
+    padding: 11px 16px; font-size: 11px;
+    letter-spacing: 1px; margin-bottom: 20px; display: none;
+}
+.alert-msg.error   { border: 1px solid rgba(220,80,80,.5); color: #e07070; background: rgba(220,80,80,.07); }
+.alert-msg.success { border: 1px solid rgba(80,200,120,.5); color: #70c890; background: rgba(80,200,120,.07); }
+.alert-msg.show    { display: block; }
+
+/* Barra de fortaleza de contraseña */
+.strength-bar { display: flex; gap: 4px; margin-top: 7px; }
+.strength-bar span {
+    flex: 1; height: 2px;
+    background: rgba(138,133,120,.2); transition: background .3s;
+}
+.strength-bar.weak   span:nth-child(1) { background: #c0392b; }
+.strength-bar.medium span:nth-child(1),
+.strength-bar.medium span:nth-child(2) { background: #e67e22; }
+.strength-bar.strong span              { background: #27ae60; }
+
+/* Texto que dice si la contraseña es débil, media o segura */
+.strength-label {
+    font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-top: 5px; color: var(--text-muted);
+}
+
+/* Tarjeta de la página recuperar contraseña */
+.card {
+    width: 460px; background: var(--dark-2);
+    border: 1px solid var(--border);
+    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+    padding: 54px 50px;
+    animation: fadeUp .8s ease both;
+    position: relative;
+}
+
+/* Línea dorada arriba de la tarjeta */
+.card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent 0%, var(--gold) 40%, var(--gold) 60%, transparent 100%);
+    opacity: .6;
+}
+
+/* Botón para volver atrás */
+.back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    margin-bottom: 36px; transition: color .2s;
+}
+.back-btn svg {
+    width: 14px; height: 14px; fill: none;
+    stroke: currentColor; stroke-width: 1.8; stroke-linecap: round;
+}
+.back-btn:hover { color: var(--gold); }
+
+/* Descripción del formulario de recuperar */
+.form-desc {
+    font-size: 12px; font-weight: 300;
+    color: var(--text-muted); line-height: 1.85;
+    margin-bottom: 34px; letter-spacing: .4px;
+}
+
+/* Separador con texto en el centro */
+.sep {
+    display: flex; align-items: center;
+    gap: 12px; margin: 28px 0 22px;
+}
+.sep::before, .sep::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(201,168,76,.12);
+}
+.sep span {
+    font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-muted);
+}
+
+/* Links alternativos debajo del separador */
+.alt-links { display: flex; justify-content: space-between; gap: 10px; }
+.alt-link {
+    flex: 1; display: flex; align-items: center;
+    justify-content: center; gap: 7px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    padding: 11px 10px; border: 1px solid transparent;
+    transition: color .2s, border-color .2s;
+}
+.alt-link svg {
+    width: 13px; height: 13px; fill: none;
+    stroke: currentColor; stroke-width: 1.8; stroke-linecap: round;
+}
+.alt-link:hover { color: var(--gold); border-color: rgba(201,168,76,.2); }
+
+/* Pantalla de éxito al enviar el correo de recuperación */
+.success-state { display: none; text-align: center; padding-top: 10px; }
+.success-state.show { display: block; }
+
+/* Círculo con el check de confirmación */
+.check-circle {
+    width: 64px; height: 64px; margin: 0 auto 24px;
+    border: 1.5px solid rgba(39,174,96,.5);
+    display: flex; align-items: center; justify-content: center;
+}
+.check-circle svg {
+    width: 26px; height: 26px; fill: none;
+    stroke: #27ae60; stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* Título de la pantalla de éxito */
+.success-title {
+    font-family: var(--font-serif);
+    font-size: 28px; font-weight: 400;
+    color: var(--text); margin-bottom: 12px;
+}
+
+/* Mensaje de la pantalla de éxito */
+.success-msg {
+    font-size: 12px; color: var(--text-muted);
+    line-height: 1.9; margin-bottom: 32px; font-weight: 300;
+}
+.success-msg strong { color: var(--gold); font-weight: 500; }
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 700px) {
+    .container    { flex-direction: column; width: 96%; }
+    .panel-left   { width: 100%; padding: 32px 20px; }
+    .panel-right  { padding: 36px 26px; }
+    .card         { width: 94%; padding: 40px 26px; }
+    .alt-links    { flex-direction: column; }
+}
