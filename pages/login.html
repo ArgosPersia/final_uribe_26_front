@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Iniciar Sesión</title>
+<link rel="stylesheet" href="../css/styles.css"/>
+</head>
+<body>
+
+<div class="container">
+
+<div class="panel-left">
+    <p class="panel-headline">Nuestras marcas</p>
+
+    <div class="brands-grid">
+
+    <div class="brand-card">
+        <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="brand-name-tag">Chevinof</div>
+        <div class="brand-desc">Alta costura</div>
+    </div>
+
+    <div class="brand-card">
+        <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="brand-name-tag">Naf Naf</div>
+        <div class="brand-desc">Casual chic</div>
+    </div>
+
+    <div class="brand-card">
+        <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="brand-name-tag">Sprint</div>
+        <div class="brand-desc">Urbano & sport</div>
+    </div>
+
+    <div class="brand-card">
+        <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="brand-name-tag">Americanino</div>
+        <div class="brand-desc">Denim & lifestyle</div>
+    </div>
+
+    </div>
+
+    <div class="divider-ornament"><span>◆</span></div>
+    <p class="panel-tagline">Moda que define<br/>cada estilo de vida</p>
+</div>
+
+
+<div class="panel-right">
+    <p class="form-eyebrow">Bienvenido de regreso</p>
+    <h1 class="form-title">Iniciar<br/>Sesión</h1>
+
+    <div class="alert-msg" id="alertMsg"></div>
+
+    <form onsubmit="handleLogin(event)">
+
+    <div class="input-group">
+        <label for="identifier">Usuario o Correo</label>
+        <div class="input-wrapper">
+        <input type="text" id="identifier"
+                placeholder="nombre@correo.com"
+                autocomplete="username" required/>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label for="password">Contraseña</label>
+        <div class="input-wrapper">
+        <input type="password" id="password"
+            placeholder="••••••••"
+            autocomplete="current-password" required/>
+        <button type="button" class="toggle-pass"
+                onclick="togglePass('password', this)">Ver</button>
+        </div>
+        <a href="recuperar.html" class="forgot-link">¿Olvidó su contraseña?</a>
+    </div>
+
+    <button type="submit" class="btn-primary">
+        <span>Ingresar</span>
+    </button>
+
+    </form>
+
+    <p class="form-footer">
+    ¿No tiene cuenta? &nbsp;<a href="registro.html">Regístrese aquí</a>
+    </p>
+</div>
+
+</div>
+
+<script src="../js/auth.js"></script>
+</body>
+</html>
