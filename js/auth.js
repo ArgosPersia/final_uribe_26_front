@@ -36,7 +36,10 @@ async function handleLogin(e) {
         const data = await res.json();
 
         if (res.ok) {
-            if (data.token) localStorage.setItem('token', data.token);
+            // Guardar token y nombre para usarlos en el dashboard
+            if (data.token)  localStorage.setItem('token', data.token);
+            if (data.nombre) localStorage.setItem('nombreUsuario', data.nombre);
+
             showAlert('alertMsg', 'Acceso concedido. Redirigiendo...', 'success');
             setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
         } else {
@@ -103,7 +106,7 @@ async function handleRegister(e) {
         });
         const data = await res.json();
 
-        if (res.ok) {
+        if (res.ok || res.status === 201) {
             showAlert('alertMsg', 'Cuenta creada exitosamente. Redirigiendo...', 'success');
             setTimeout(() => { window.location.href = 'login.html'; }, 1500);
         } else {
@@ -135,8 +138,8 @@ async function handleRecover(e) {
         if (res.ok) {
             const sentTo = document.getElementById('sentTo');
             if (sentTo) sentTo.textContent = correo;
-            document.getElementById('formState').style.display = 'none';
-            document.getElementById('successState').className  = 'success-state show';
+            document.getElementById('formState').style.display  = 'none';
+            document.getElementById('successState').className   = 'success-state show';
         } else {
             showAlert('alertMsg', data.message || 'No se encontró una cuenta con ese correo.', 'error');
         }
