@@ -1,0 +1,409 @@
+/* ── Dashboard layout ─────────────────────────────────────── */
+.dashboard-body {
+    overflow: auto;
+    align-items: flex-start;
+    padding: 0;
+}
+
+/* Barra superior */
+.topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 58px;
+    background: var(--dark-2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 100;
+}
+
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topbar-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(201,168,76,.6);
+}
+
+.topbar-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-user {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.btn-cerrar {
+    background: none;
+    border: 1px solid rgba(201,168,76,.25);
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+}
+.btn-cerrar:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+/* ── Contenido principal ─────────────────────────────────── */
+.dash-main {
+    display: flex;
+    gap: 0;
+    min-height: 100vh;
+    padding-top: 58px;
+    width: 100%;
+}
+
+/* Panel izquierdo — formulario */
+.form-panel {
+    width: 400px;
+    min-width: 380px;
+    padding: 48px 40px;
+    border-right: 1px solid var(--border);
+    background: var(--dark-2);
+}
+
+/* Panel derecho — tabla */
+.table-panel {
+    flex: 1;
+    padding: 48px 40px;
+    background: var(--dark);
+    overflow: hidden;
+}
+
+/* Fila doble en el form */
+.dash-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Select con mismo estilo que los inputs */
+.input-select {
+    width: 100%;
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,.2);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color .3s, box-shadow .3s;
+    letter-spacing: .5px;
+    appearance: none;
+    cursor: pointer;
+}
+.input-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,.08);
+}
+.input-select option {
+    background: var(--dark-3);
+    color: var(--text);
+}
+
+/* Input tipo date */
+input[type="date"] {
+    color-scheme: dark;
+}
+
+/* Badge de estado LIMPIA / INVALIDA */
+.estado-badge {
+    padding: 10px 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.estado-badge.limpia {
+    border: 1px solid rgba(39,174,96,.4);
+    color: #4ecb71;
+    background: rgba(39,174,96,.07);
+}
+.estado-badge.invalida {
+    border: 1px solid rgba(220,80,80,.4);
+    color: #e07070;
+    background: rgba(220,80,80,.07);
+}
+
+/* ── Tabla de ventas ─────────────────────────────────────── */
+.table-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.table-filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: none;
+    border: 1px solid rgba(201,168,76,.15);
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,.05);
+}
+
+.tabla-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+}
+
+.ventas-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.ventas-tabla thead tr {
+    background: rgba(201,168,76,.06);
+    border-bottom: 1px solid var(--border);
+}
+
+.ventas-tabla th {
+    padding: 13px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.ventas-tabla td {
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(201,168,76,.06);
+    color: var(--text);
+    letter-spacing: .3px;
+}
+
+.ventas-tabla tbody tr:hover td {
+    background: rgba(201,168,76,.03);
+}
+
+.tabla-vacia td {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px !important;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Pill de estado en la tabla */
+.pill {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+.pill-limpia   { background: rgba(39,174,96,.12);  color: #4ecb71; border: 1px solid rgba(39,174,96,.3); }
+.pill-invalida { background: rgba(220,80,80,.12);  color: #e07070; border: 1px solid rgba(220,80,80,.3); }
+.pill-sucia    { background: rgba(230,126,34,.12); color: #e67e22; border: 1px solid rgba(230,126,34,.3); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .dash-main      { flex-direction: column; }
+    .form-panel     { width: 100%; min-width: unset; border-right: none; border-bottom: 1px solid var(--border); }
+    .table-panel    { padding: 32px 20px; }
+    .dash-row       { grid-template-columns: 1fr; }
+    .table-header   { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── Nav tabs del topbar ─────────────────────────────────────── */
+.topbar-nav {
+    display: flex;
+    gap: 4px;
+}
+.nav-tab {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+}
+
+/* ── Vista analítica ─────────────────────────────────────────── */
+.analitica-main {
+    flex-direction: column !important;
+}
+.analitica-panel {
+    flex: 1;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.analitica-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.analitica-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+    padding-top: 8px;
+}
+.btn-accion {
+    background: none;
+    border: 1px solid rgba(201,168,76,.3);
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+}
+.btn-accion:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,.05);
+}
+.btn-accion-warn {
+    border-color: rgba(138,133,120,.2);
+}
+
+/* ── Cards de estadísticas ───────────────────────────────────── */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+.stat-card {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    text-align: center;
+}
+.stat-num {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.stat-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* ── Buscar por vendedor ─────────────────────────────────────── */
+.vendedor-query {
+    background: var(--dark-2);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+}
+.vendedor-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.vendedor-row .input-wrapper input {
+    width: 100%;
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,.2);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color .3s;
+}
+.vendedor-row .input-wrapper input:focus {
+    border-color: var(--gold);
+}
+
+/* ── Label del resultado ─────────────────────────────────────── */
+.query-resultado { display: flex; flex-direction: column; gap: 12px; }
+.query-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ── Responsive analítica ────────────────────────────────────── */
+@media (max-width: 900px) {
+    .stats-row     { grid-template-columns: 1fr 1fr; }
+    .analitica-panel { padding: 24px 16px; }
+    .analitica-header { flex-direction: column; }
+    .vendedor-row  { flex-direction: column; }
+}
+@media (max-width: 500px) {
+    .stats-row { grid-template-columns: 1fr; }
+}
